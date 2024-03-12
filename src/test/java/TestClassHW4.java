@@ -3,6 +3,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.support.PageFactory;
@@ -20,8 +21,8 @@ public class TestClassHW4 {
     MobileElement panelConfNumber;
     @AndroidFindBy(id = "btnGotoVanityUrl")
     MobileElement btnGotoVanityUrl;
-    @AndroidFindBy(id = "panelScreenName")
-    MobileElement panelScreenName;
+    @AndroidFindBy(id = "edtScreenName")
+    MobileElement edtScreenName;
 
     private final DriverFactory driverFactory = new DriverFactory();
     private AndroidDriver<?> driver;
@@ -35,15 +36,21 @@ public class TestClassHW4 {
 
     @Test
     public void test() throws InterruptedException {
-
+        Thread.sleep(Long.parseLong("50000"));
+        Assert.assertTrue(btnJoinConf.isDisplayed());
+        Assert.assertTrue(btnJoinConf.isEnabled());
+        Assert.assertFalse(btnJoinConf.isSelected());
         btnJoinConf.click();
 
         Thread.sleep(Long.parseLong("5000"));
+
         btnBack.isDisplayed();
         txtTitle.isDisplayed();
         panelConfNumber.isDisplayed();
         btnGotoVanityUrl.isDisplayed();
-        panelScreenName.isDisplayed();
+        edtScreenName.isDisplayed();
+
+        Assert.assertEquals("Join a Meeting", txtTitle.getText());
 
         MobileElement buttonJoin = (MobileElement) driver.findElementById("btnJoin");
         MobileElement textUnderJoin = (MobileElement) driver.findElementByAndroidUIAutomator(
@@ -66,6 +73,13 @@ public class TestClassHW4 {
         textTurnOffMyVideo.isDisplayed();
         chkNoVideo.isDisplayed();
 
+        Assert.assertFalse(buttonJoin.isEnabled());
+
+        String text = edtScreenName.getText();
+        edtScreenName.clear();
+        Assert.assertNotEquals(text, edtScreenName.getText());
+        edtScreenName.sendKeys(text);
+        Assert.assertEquals(text, edtScreenName.getText());
     }
 
     @After

@@ -16,7 +16,7 @@ public class DriverFactory {
         capabilities.setCapability(APP, "C:/Хранилище/Документы/Учёба/Разработчик/Автоматизация тестирования мобильных приложений на Java/ZOOM.apk");
         URL remoteUrl = new URL("http://localhost:4723/wd/hub");
         driver = new AndroidDriver<>(remoteUrl, capabilities);
-        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
         return driver;
     }
 }
