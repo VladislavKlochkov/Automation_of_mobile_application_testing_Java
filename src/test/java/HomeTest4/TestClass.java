@@ -1,3 +1,6 @@
+package HomeTest4;
+
+import HW4.DriverFactory;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -10,7 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.net.MalformedURLException;
 
-public class TestClassHW4 {
+public class TestClass {
     @AndroidFindBy(id = "btnJoinConf")
     MobileElement btnJoinConf;
     @AndroidFindBy(id = "btnBack")
