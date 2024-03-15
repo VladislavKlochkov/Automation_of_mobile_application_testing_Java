@@ -1,1 +1,1 @@
-## Automation_of_mobile_application_testing_Java_Homework
+# Automation_of_mobile_application_testing_Java
